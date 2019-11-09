@@ -1,7 +1,7 @@
 const Hapi = require('@hapi/hapi');
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const { CREATED } = require('http-status');
-const { OK } = require('http-status');
+const { NO_CONTENT } = require('http-status');
 const sequelize = new Sequelize('fitafitblog', 'fitafitblog', 'fitafitblog', {
     dialect: 'mysql', 
     host: 'localhost',
@@ -86,7 +86,7 @@ const init = async () => {
         handler: async (request, h) => {
             const { id } = request.params;
             await Post.destroy({ where: { id }});
-            return await Post.findAll();
+            return h.response().code(NO_CONTENT);
         }
     });
 
