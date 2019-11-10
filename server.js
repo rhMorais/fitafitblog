@@ -4,8 +4,8 @@ const { CREATED } = require('http-status');
 const { NO_CONTENT } = require('http-status');
 const sequelize = new Sequelize('fitafitblog', 'fitafitblog', 'fitafitblog', {
     dialect: 'mysql', 
-    host: 'localhost',
-    port: 3310
+    host: 'mysql669.umbler.com',
+    port: 3306
 });
 
 const data = [
@@ -22,7 +22,7 @@ const data = [
 const init = async () => {
     const server = Hapi.server({
         port: 3000,
-        host: 'localhost'
+        host: 'mysql669.umbler.com'
     });
 
     class Post extends Model { };
