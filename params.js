@@ -1,7 +1,7 @@
-const params = {
+module.exports = {
     conn: {
         port: process.env.PORT || 3000,
-        host: 'localhost'
+        //host: 'localhost'
     },
     dbConn: {
         database: '6RfeAsflL1',
@@ -12,5 +12,3 @@ const params = {
         port: 3306
     },        
 };
-
-module.exports = params;
