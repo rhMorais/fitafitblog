@@ -2,10 +2,12 @@ const Hapi = require('@hapi/hapi');
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const { CREATED } = require('http-status');
 const { NO_CONTENT } = require('http-status');
-const sequelize = new Sequelize('6RfeAsflL1', '6RfeAsflL1', '9fieB2Karx', {
-    dialect: 'mysql', 
-    host: 'remotemysql.com',
-    port: 3306
+const { conn, dbConn } = require('../fitafitblog/params');
+
+const sequelize = new Sequelize(dbConn.database, dbConn.username, dbConn.password, {
+    dialect: dbConn.dialect, 
+    host: dbConn.host,
+    port: dbConn.port
 });
 
 const data = [
@@ -20,9 +22,7 @@ const data = [
 ];
 
 const init = async () => {
-    const server = Hapi.server({
-        port: process.env.PORT || 3000,
-    });
+    const server = Hapi.server(conn);
 
     class Post extends Model { };
     Post.init({
@@ -42,8 +42,6 @@ const init = async () => {
         method: 'GET',
         path: '/posts',
         handler: async (request, h) => {
-            //return data;
-            
             return await Post.findAll();
         }
     });
@@ -53,8 +51,6 @@ const init = async () => {
         path: '/posts/{id}',
         handler: async (request, h) => {
             const { id } = request.params;
-            // const post = data.find(post => post.id === +id);
-            // return post || {};
             return await Post.findByPk(id) || {};
         }
     });
@@ -91,7 +87,7 @@ const init = async () => {
 
     try {
         await sequelize.sync();
-        Post.bulkCreate(data)
+        //Post.bulkCreate(data)
     } catch (error){
         throw new Error(error);
     }
