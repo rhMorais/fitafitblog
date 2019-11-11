@@ -2,10 +2,10 @@ const Hapi = require('@hapi/hapi');
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const { CREATED } = require('http-status');
 const { NO_CONTENT } = require('http-status');
-const sequelize = new Sequelize('fitafitblog', 'fitafitblog', 'fitafitblog', {
+const sequelize = new Sequelize('6RfeAsflL1', '6RfeAsflL1', '9fieB2Karx', {
     dialect: 'mysql', 
-    host: 'mysql669.umbler.com',
-    //port: 41890
+    host: 'remotemysql.com',
+    port: 3306
 });
 
 const data = [
