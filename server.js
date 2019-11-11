@@ -4,8 +4,8 @@ const { CREATED } = require('http-status');
 const { NO_CONTENT } = require('http-status');
 const sequelize = new Sequelize('fitafitblog', 'fitafitblog', 'fitafitblog', {
     dialect: 'mysql', 
-    host: 'mysql669.umbler.com',
-    //port: 41890
+    host: 'localhost',
+    port: 3310
 });
 
 const data = [
