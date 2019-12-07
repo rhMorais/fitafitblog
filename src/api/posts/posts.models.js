@@ -8,5 +8,10 @@ export default (sequelize, dataTypes) => {
         content: dataTypes.TEXT
     }, { sequelize, modelName: 'post' });
 
+    Post.associate = models => {
+        models.post.belongsTo(models.user);
+        models.post.hasMany(models.tag);
+    }
+
     return Post;
 };

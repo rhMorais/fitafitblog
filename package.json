@@ -5,17 +5,24 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node -r esm ./node_modules/.bin/lab"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/boom": "^8.0.1",
+    "@hapi/code": "^7.0.0",
     "@hapi/hapi": "^18.4.0",
     "@hapi/joi": "^16.1.7",
+    "@hapi/lab": "^21.0.0",
+    "bcrypt": "^3.0.7",
+    "dotenv": "^8.2.0",
     "esm": "^3.2.25",
+    "hapi-auth-jwt2": "^8.8.1",
     "hapi-router": "^5.0.0",
     "hapi-sequelizejs": "^3.1.0",
     "http-status": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.0.0",
     "sequelize": "^5.21.2"
   },
